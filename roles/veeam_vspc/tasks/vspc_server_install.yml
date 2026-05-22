@@ -78,6 +78,11 @@
   when: create_service_account | bool
 
 # INSTALLING PREREQUISITES
+- name: Install Microsoft SQL Server CLR Types
+  ansible.windows.win_package:
+    path: "{{ source }}Redistr\\x64\\SQLSysClrTypes.msi"
+    state: present
+    arguments: '/L*v "{{ destination }}logs\\SQLSysClrTypes.log" /qn /norestart'
 - name: Install Microsoft Report Viewer 2015 Runtime
   ansible.windows.win_package:
     path: "{{ source }}Redistr\\ReportViewer.msi"
@@ -98,11 +103,6 @@
     path: "{{ source }}Redistr\\x64\\aspnetcore-runtime-8.0.25-win-x64.exe"
     state: present
     arguments: '/install /quiet /norestart /log "{{ destination }}logs\\aspnetcore-runtime.log"'
-- name: Install Microsoft SQL Server CLR Types
-  ansible.windows.win_package:
-    path: "{{ source }}Redistr\\x64\\SQLSysClrTypes.msi"
-    state: present
-    arguments: '/L*v "{{ destination }}logs\\SQLSysClrTypes.log" /qn /norestart'
 - name: Install Microsoft OLE DB Driver for SQL Server
   ansible.windows.win_package:
     path: "{{ source }}Redistr\\x64\\msoledbsql.msi"

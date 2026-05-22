@@ -6,6 +6,14 @@ veeamhub.veeam Release Notes
 
 This changelog describes changes after version 1.5.0.
 
+v2.4.1
+======
+
+Minor Changes
+-------------
+
+- Updated role - `veeam_vspc` - changed the order of prerequisite software installed to resolve a dependency error.
+
 v2.4.0
 ======
 
